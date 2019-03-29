@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B3E7B58A1CC2AC0600A0062D /* SafariWebAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* SafariWebAuth.m */; };
-		BD3FB225224D63E200AAC737 /* SafariWebAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3FB224224D63E200AAC737 /* SafariWebAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +24,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libSafariWebAuth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSafariWebAuth.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* SafariWebAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafariWebAuth.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* SafariWebAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafariWebAuth.m; sourceTree = "<group>"; };
-		BD3FB224224D63E200AAC737 /* SafariWebAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebAuth.swift; sourceTree = "<group>"; };
-		BD3FB226224D643B00AAC737 /* SafariWebAuth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SafariWebAuth-Bridging-Header.h"; sourceTree = "<group>"; };
+		BD47137B224D870A0001EFC2 /* SafariWebAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafariWebAuth.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +50,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				BD3FB226224D643B00AAC737 /* SafariWebAuth-Bridging-Header.h */,
-				BD3FB224224D63E200AAC737 /* SafariWebAuth.swift */,
-				B3E7B5881CC2AC0600A0062D /* SafariWebAuth.h */,
+				BD47137B224D870A0001EFC2 /* SafariWebAuth.h */,
 				B3E7B5891CC2AC0600A0062D /* SafariWebAuth.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
@@ -119,7 +114,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD3FB225224D63E200AAC737 /* SafariWebAuth.swift in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* SafariWebAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,7 +158,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -201,7 +195,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

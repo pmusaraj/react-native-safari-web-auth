@@ -1,9 +1,44 @@
+#import "SafariWebAuth.h"
+#import <React/RCTUtils.h>
+#import <React/RCTLog.h>
+#import <AuthenticationServices/ASWebAuthenticationSession.h>
 
-#import <Foundation/Foundation.h>
-#import <React/RCTBridgeModule.h>
+ASWebAuthenticationSession *_authenticationVC;
 
-@interface RCT_EXTERN_MODULE(SafariWebAuth, NSObject)
+@implementation SafariWebAuth
 
-RCT_EXTERN_METHOD(requestAuth:(NSString *)authUrl)
+RCT_EXPORT_MODULE()
+
+- (dispatch_queue_t)methodQueue
+{
+    return dispatch_get_main_queue();
+}
+
+RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
+{
+    if (!requestURL) {
+        RCTLogError(@"[SafariWebAuth] You must specify a url.");
+        return;
+    }
+    
+    if (@available(iOS 12.0, *)) {
+        ASWebAuthenticationSession* authenticationVC =
+        [[ASWebAuthenticationSession alloc] initWithURL:requestURL
+                                      callbackURLScheme: @""
+                                      completionHandler:^(NSURL * _Nullable callbackURL,
+                                                          NSError * _Nullable error) {
+            _authenticationVC = nil;
+
+            if (callbackURL) {
+                [RCTSharedApplication() openURL:callbackURL];
+            } else {
+                RCTLogError(@"[SafariWebAuth] Could not load URL.");
+            }
+        }];
+
+        _authenticationVC = authenticationVC;
+        [authenticationVC start];
+    }
+}
 
 @end
