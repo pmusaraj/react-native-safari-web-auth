@@ -31,8 +31,6 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
 
             if (callbackURL) {
                 [RCTSharedApplication() openURL:callbackURL];
-            } else {
-                RCTLogError(@"[SafariWebAuth] Could not load URL.");
             }
         }];
 
