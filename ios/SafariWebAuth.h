@@ -3,7 +3,8 @@
 //
 
 #import <React/RCTBridgeModule.h>
+#import <UIKit/UIKit.h>
 
-@interface SafariWebAuth : NSObject <RCTBridgeModule>
+@interface SafariWebAuth : NSObject <UIApplicationDelegate, RCTBridgeModule>
 
 @end

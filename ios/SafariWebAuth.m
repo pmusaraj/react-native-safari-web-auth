@@ -34,7 +34,6 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
             }
         }];
 
-        // New in iOS 13
         if (@available(iOS 13.0, *)) {
             authenticationVC.presentationContextProvider = self;
         }
