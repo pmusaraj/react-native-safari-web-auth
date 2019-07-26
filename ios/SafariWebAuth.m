@@ -34,9 +34,21 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
             }
         }];
 
+        // New in iOS 13
+        if (@available(iOS 13.0, *)) {
+            authenticationVC.presentationContextProvider = self;
+        }
+
         _authenticationVC = authenticationVC;
+
         [authenticationVC start];
     }
+}
+
+#pragma mark - ASWebAuthenticationPresentationContextProviding
+
+- (ASPresentationAnchor)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession *)session  API_AVAILABLE(ios(13.0)){
+   return UIApplication.sharedApplication.keyWindow;
 }
 
 @end
