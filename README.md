@@ -1,6 +1,6 @@
 # react-native-safari-web-auth
 
-One-time login authentication for iOS 12+ only, using [ASWebAuthentication](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession).
+One-time login authentication for iOS 12+ using [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession).
 
 ## Getting started
 
@@ -14,6 +14,8 @@ One-time login authentication for iOS 12+ only, using [ASWebAuthentication](http
 
 ```javascript
 import SafariWebAuth from "react-native-safari-web-auth";
+import {Platform} from "react-native";
+
 
 if (Platform.OS !== "ios" && parseInt(Platform.Version, 10) >= 12) {
 	SafariWebAuth.requestAuth(`https://your.site.com/auth`);
