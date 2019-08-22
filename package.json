@@ -1,6 +1,6 @@
 {
   "name": "react-native-safari-web-auth",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Authentication helper for react-native projects using ASWebAuthentication. iOS 12+ only.",
   "main": "index.js",
   "scripts": {

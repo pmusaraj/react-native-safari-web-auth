@@ -11,6 +11,7 @@ ASWebAuthenticationSession *_authenticationVC;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #import <AuthenticationServices/AuthenticationServices.h>
 @interface SafariWebAuth() <ASWebAuthenticationPresentationContextProviding>
+@end
 #endif
 
 @implementation SafariWebAuth
