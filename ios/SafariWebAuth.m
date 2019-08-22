@@ -3,7 +3,15 @@
 #import <React/RCTLog.h>
 #import <AuthenticationServices/ASWebAuthenticationSession.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpartial-availability"
 ASWebAuthenticationSession *_authenticationVC;
+#pragma clang diagnostic pop
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+#import <AuthenticationServices/AuthenticationServices.h>
+@interface SafariWebAuth() <ASWebAuthenticationPresentationContextProviding>
+#endif
 
 @implementation SafariWebAuth
 
@@ -34,9 +42,11 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
             }
         }];
 
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
         if (@available(iOS 13.0, *)) {
             authenticationVC.presentationContextProvider = self;
         }
+        #endif
 
         _authenticationVC = authenticationVC;
 
@@ -44,10 +54,12 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
     }
 }
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma mark - ASWebAuthenticationPresentationContextProviding
 
 - (ASPresentationAnchor)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession *)session  API_AVAILABLE(ios(13.0)){
    return UIApplication.sharedApplication.keyWindow;
 }
+#endif
 
 @end
