@@ -23,7 +23,9 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
+RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL
+                     resolver:(RCTPromiseResolveBlock)resolve
+                     rejecter:(RCTPromiseRejectBlock)reject)
 {
     if (!requestURL) {
         RCTLogError(@"[SafariWebAuth] You must specify a url.");
@@ -39,7 +41,12 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
             _authenticationVC = nil;
 
             if (callbackURL) {
+                NSLog(@"[SafariWebAuth] Auth success, callbackURL = %@", callbackURL);
+                resolve([callbackURL absoluteString]);
                 [RCTSharedApplication() openURL:callbackURL];
+            } else {
+                NSLog(@"[SafariWebAuth] Auth failure, error = %@", error);
+                reject(@"requestAuth", @"Auth failed", error);
             }
         }];
 
