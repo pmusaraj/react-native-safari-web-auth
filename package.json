@@ -1,7 +1,7 @@
 {
   "name": "react-native-safari-web-auth",
-  "version": "1.0.4",
-  "description": "Authentication helper for react-native projects using ASWebAuthentication. iOS 12+ only.",
+  "version": "1.0.5",
+  "description": "Authentication helper for react-native projects using ASWebAuthentication. iOS 13+ only.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
