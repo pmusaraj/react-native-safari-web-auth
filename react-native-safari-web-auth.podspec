@@ -10,10 +10,11 @@ Pod::Spec.new do |s|
 
   s.authors      = package['author']
   s.homepage     = package['homepage']
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "13.7"
+  s.swift_version = "5.0"
 
   s.source       = { :git => "https://github.com/pmusaraj/react-native-safari-web-auth.git", :tag => "v#{s.version}" }
-  s.source_files  = "ios/**/*.{h,m}"
+  s.source_files = "ios/**/*.{h,m,mm,swift}"
 
-  s.dependency 'React'
+  s.dependency "React-Core"
 end
