@@ -14,10 +14,10 @@ class SafariWebAuth: RCTEventEmitter, ASWebAuthenticationPresentationContextProv
     return ASPresentationAnchor()
   }
 
-  @objc(requestAuth:callbackURLScheme:)
-  func requestAuth(url: String, callbackURLScheme: String) {
+  @objc(requestAuth:callbackURLScheme:ephemeral:resolver:rejecter:)
+  func requestAuth(url: String, callbackURLScheme: String, ephemeral: Bool, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
     guard let parsedUrl = URL(string: url) else {
-      // TODO: reject/notify?
+      reject("error", "Invalid URL.", nil)
       return
     }
 
@@ -26,15 +26,14 @@ class SafariWebAuth: RCTEventEmitter, ASWebAuthenticationPresentationContextProv
       callbackURLScheme: callbackURLScheme,
       completionHandler: { (callbackURL: URL?, error: Error?) in
         if let error = error {
-          let errorUrl = URL(string: "\(callbackURLScheme)://error?desc=\(error.localizedDescription)")
-          UIApplication.shared.open(errorUrl!, options: [:], completionHandler: nil)
+          reject("error", error.localizedDescription, nil)
         } else if let callbackURL = callbackURL {
-          UIApplication.shared.open(callbackURL, options: [:], completionHandler: nil)
+          resolve(callbackURL.absoluteString)
         }
       })
 
     self.webAuthSession?.presentationContextProvider = self
-    // webAuthSession?.prefersEphemeralWebBrowserSession = true
+    self.webAuthSession?.prefersEphemeralWebBrowserSession = ephemeral
     self.webAuthSession?.start()
   }
 }
