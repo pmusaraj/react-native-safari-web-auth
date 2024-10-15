@@ -2,7 +2,12 @@
 
 @interface RCT_EXTERN_MODULE(SafariWebAuth, NSObject)
 
-RCT_EXTERN_METHOD(requestAuth:(NSString *)url callbackURLScheme:(NSString *)callbackURLScheme)
+RCT_EXTERN_METHOD(requestAuth:
+  (NSString *)url
+  callbackURLScheme:(NSString *)callbackURLScheme
+  ephemeral:(BOOL *)ephemeral
+  resolver:(RCTPromiseResolveBlock)resolve
+  rejecter:(RCTPromiseRejectBlock)reject)
 
 + (BOOL)requiresMainQueueSetup
 {
